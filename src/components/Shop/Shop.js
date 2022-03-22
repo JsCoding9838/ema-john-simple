@@ -1,6 +1,7 @@
 import { faSackDollar } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useEffect, useState } from 'react';
+import CartDetails from '../CartDetails/CartDetails';
 import Product from '../Product/Product';
 import './Shop.css'
 const Shop = () => {
@@ -31,8 +32,14 @@ const Shop = () => {
             </div>
             <div className="cart-container">
                 <h1><FontAwesomeIcon icon={faSackDollar}></FontAwesomeIcon> <sup>{totalPrice}</sup></h1>
-                <h2>Cart Container</h2>
+                <h2>Cart Summary</h2>
                 <p>Selected items: {cart.length}</p>
+                <div>
+                    <h2>Cart Details</h2>
+                    {
+                        cart.map(product => <CartDetails product= {product} key={product.id}></CartDetails>)
+                    }
+                </div>
             </div>
         </div>
     );
